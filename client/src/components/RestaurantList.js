@@ -1,35 +1,16 @@
-//RestaurantList.js
-
 import React, { useContext, useState, useEffect } from 'react';
 import RestaurantCard from './RestaurantCard';
 import { RestaurantContext } from '../contexts/RestaurantContext';
 import PreviousOrders from './PreviousOrders';
-
 
 const RestaurantList = () => {
     const { restaurants, setSelectedRestaurant } = useContext(RestaurantContext);
     const [filteredRestaurants, setFilteredRestaurants] = useState([...restaurants]);
     const [ratingFilter, setRatingFilter] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-    const [showOrder, setShowOrder] = useState(false)
+    const [showOrder, setShowOrder] = useState(false);
 
     useEffect(() => {
-        filterRestaurants();
-    }, [ratingFilter, searchTerm, restaurants, filterRestaurants]);
-
-    const handleRestaurantClick = (restaurantId) => {
-        setSelectedRestaurant(restaurants.find((restaurant) => restaurant._id === restaurantId));
-    };
-
-    const handleRatingChange = (e) => {
-        setRatingFilter(e.target.value);
-    };
-
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
-
-    const filterRestaurants = () => {
         let filtered = restaurants;
 
         if (ratingFilter) {
@@ -44,10 +25,24 @@ const RestaurantList = () => {
         }
 
         setFilteredRestaurants(filtered);
+    }, [ratingFilter, searchTerm, restaurants]);  // No need to include filterRestaurants in dependencies
+
+    const handleRestaurantClick = (restaurantId) => {
+        setSelectedRestaurant(restaurants.find((restaurant) => restaurant._id === restaurantId));
     };
+
+    const handleRatingChange = (e) => {
+        setRatingFilter(e.target.value);
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
     const handleShow = () => {
-        setShowOrder(!showOrder)
-    }
+        setShowOrder(!showOrder);
+    };
+
     return (
         <div className="container">
             <h2 className="header">Restaurant List</h2>
@@ -86,7 +81,6 @@ const RestaurantList = () => {
                 ))}
             </div>
             {showOrder && <PreviousOrders handleShow={handleShow} />}
-
         </div>
     );
 };
