@@ -2,7 +2,7 @@
 
 import React, { useContext } from "react";
 import RestaurantList from "./components/RestaurantList";
-import DishesMenu from "./components/DishesMenu";
+import DishesMenu from './components/DishesMenu';
 import Cart from "./components/Cart";
 import { RestaurantContext } from "./contexts/RestaurantContext";
 import "./App.css"; // Import the CSS file
