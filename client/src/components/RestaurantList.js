@@ -15,7 +15,7 @@ const RestaurantList = () => {
 
     useEffect(() => {
         filterRestaurants();
-    }, [ratingFilter, searchTerm, restaurants]);
+    }, [ratingFilter, searchTerm, restaurants, filterRestaurants]);
 
     const handleRestaurantClick = (restaurantId) => {
         setSelectedRestaurant(restaurants.find((restaurant) => restaurant._id === restaurantId));
