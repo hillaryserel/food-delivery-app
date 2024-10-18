@@ -38,8 +38,7 @@ const RestaurantProvider = ({ children }) => {
             // If the dish already exists, update 
             // the quantity or any other logic
             console.log(
-                "Dish already exists in the cart. 
-                You may want to update the quantity."
+                "Dish already exists in the cart. You may want to update the quantity."
             );
             // Example: Increment the quantity
             const updatedCartItems = [...cartItems];
@@ -74,8 +73,7 @@ const RestaurantProvider = ({ children }) => {
             // If the dish exists, decrement the 
             // quantity or remove it from the cart
             console.log(
-                "Dish exists in the cart. You may 
-                want to decrease the quantity or remove it."
+                "Dish exists in the cart. You may want to decrease the quantity or remove it."
             );
 
             const updatedCartItems = [...cartItems];
